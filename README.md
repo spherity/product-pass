@@ -75,7 +75,7 @@ Since information in IT systems can be easily copied and changed from a technica
 
 In addition, we show how decentralized, digital identities allow for interoperability between the various the various market participant roles and their divers business software systems. 
 ## 4.2. Design goals for an ecosystem that provides trusted electronic product information 
-Design goals[^1]  of a system that that provides trusted electronic product information can be derived from initiatives about decentralized (personal) identities. We transfer those design goals to decentralized product identities, which shall be:  
+Design goals<sup id="a1">[1](#f1)</sup> of a system that that provides trusted electronic product information can be derived from initiatives about decentralized (personal) identities. We transfer those design goals to decentralized product identities, which shall be:  
 1. **Decentral.** The system that issues product identities shall have no central component/intermediary to avoid the risks of a central, single point of failure or no central governance. Instead, the solution shall be decentralized to allow all market participants to add products and product information to the ecosystem.
 2. **Controllable.** Data owners shall have direct control over their personal data (self-sovereign identity) and the material or product information they provide.
 3.	**Private.** The privacy of shared information must be guaranteed where needed, e.g. to protect business secrets. Legal requirements, especially around data protection, protection of property rights, and confidentiality according to business secrets need to be fulfilled.
@@ -86,13 +86,13 @@ Design goals[^1]  of a system that that provides trusted electronic product info
 8.	**Simple.** The solution must be simple and easy to access for market players.
 9.	**Extensible.** The solution needs to easily extensible for additional market players and use cases (e.g., for calculation the carbon footprint of plastic virgin material) and ready for a broader, international use.  Data from different sources (e.g., databases like PEF or SCIP) needs to be integrable.
 
-[^1]:See for instance EU 849/2010, in Germany Umweltstatistikgesetz (UStatG), for export/import EC 1013/200 but also stand ards like ISO 14040 ff.
+
 
 ## 4.3. Implementing an ecosystem for trusted electronic product information in the plastics life cycle
 This Chapter addresses how the design goals of chapter 3.2 are met, especially in the context of Circular Economy. 
 ### 4.3.1 Controllable 
-The term self-sovereign identities (SSI) is a new value in various design goals compared to classic approaches. the term is most often used to describe the design goals for decentralized personal identities[^2]. However, digital products have the same design goals and therefore SSI also drives the design for electronic product passes with the goal to enable the Circular Economy. Using SSI in the product context refers to the self-sovereignty for the product data owner, i.e., the direct control over product information by the manufacturer. Each company in the value chain owns the sovereignty data of their production process. Another example is the licensee of the packaging materials (acc. to German packaging law (‘Verpackungsgesetz’)), usually the retailer of the product, who generates and thus fully controls data about the product packaging.
-[^2]:For example Rebooting Web-of-Trust initiative https://www.weboftrust.info/ 
+The term self-sovereign identities (SSI) is a new value in various design goals compared to classic approaches. the term is most often used to describe the design goals for decentralized personal identities<sup id="a2">[2](#f2)</sup>. However, digital products have the same design goals and therefore SSI also drives the design for electronic product passes with the goal to enable the Circular Economy. Using SSI in the product context refers to the self-sovereignty for the product data owner, i.e., the direct control over product information by the manufacturer. Each company in the value chain owns the sovereignty data of their production process. Another example is the licensee of the packaging materials (acc. to German packaging law (‘Verpackungsgesetz’)), usually the retailer of the product, who generates and thus fully controls data about the product packaging.
+
 ### 4.3.2 Decentral
 The underlying technologies for self-sovereign product data registries are decentralized identifiers (DIDs) and verifiable credentials (VCs). In our example in Section 4, every company in the supply chain and every product/material needs a unique DID. DIDs are not created centrally by one organization but by the DID owner (also called subject) itself. Information that describes the company or the product DID further are issued by organizations or business partners in the form of electronically signed VCs. For example, a GS1 accredited company issues the verified manufacturer address, or an auditor issues the ISO 9001 certificate to the company DID or the manufacturer issues the plastic raw material code to the product DID. 
 Decentralized Identifiers are often anchored with distributed ledger technologies, such as the Ethereum protocol, to allow a decentral, trustworthy storage of the DID documents.  DID documents describe the DID subject and most importantly contain the public key for electronic signature validation.  
@@ -123,8 +123,8 @@ The product DID `spherity:testnet:0x828efeeaab06dd9541992b791d78e5d96cd35323` th
 
 To link back from the QR code to the digital product DID and its VCs an app needs to be built with the following logic: When the code is scanned by via a QR code reader, such as a mobile device, the application decodes the DID. The DID then links (resolves) automatically to the DID document. Amongst the public key, the DID document includes service endpoints or other locations where the VCs of the product DIDs are stored. For example, if a DID is registered on the Ethereum mainnet, then its DID Document can refer to functionality and data outside the Ethereum mainnet via the service endpoints. Behind the service endpoints all product passports are stored in (decentralized databases)
 
-This is a different approach than the [Holy Grail 2.0](http://www.aim.be/priorities/digital-watermarks/)[^3] initiative, that invisibly puts recycling information directly on the packaging which is readable by recycling machines. The drawback of this solution is that the information on the product itself is limited. Using an identifier that links to distributed data allows to attach more information about the product.
-[^3]:https://www.gs1.eu/news/holy-grail-2-0-pioneering-digital-watermarks-for-smart-packaging-recycling-in-the-eu
+This is a different approach than the [Holy Grail 2.0](http://www.aim.be/priorities/digital-watermarks/)<sup id="a3">[3](#f3)</sup> initiative, that invisibly puts recycling information directly on the packaging which is readable by recycling machines. The drawback of this solution is that the information on the product itself is limited. Using an identifier that links to distributed data allows to attach more information about the product.
+
 
 ### 4.3.6 Secure
 The access to the above-mentioned service endpoints can be regulated. That means that at this point an access control mechanism can be implemented to grant access to verifiable credentials (that store all information about the DIDs, here the product) only to authorized applications/users. This way it can be ensured that product information is secure and protected against unauthorized access.
@@ -296,9 +296,8 @@ Figure 6 shows a simple code example of a W3C VC-based recycled material product
 ```
 >Figure 6: W3C Verifiable Credential for Recycled Material Passport
 
-The section `credentialSubject` is domain specific in this W3C Verifiable Credential for recyclate materials. In this paper we are using the Recycled Material Standard (RMS) Framework to describe the recyclate[^4]. In a further step, additional properties could be added also for 3rd party certifications such as the standardizations from ISO/TC 323 Circular Economy. The right data scheme and its domain specific properties for a full Circular Economy is not focus of this paper and requires further research and standardizations. The document itself has a cryptographic signature (see element “`proof`”) that ensures the immutability and therefore the trust in the information.
-[^4]:To prevent fraud, we are proposing to add some further data for plausibility checks such as the waste collection area (zip code or geo location). Such example properties are not included in this code example and should be analyzed in further research.
-Figure 7 shows an example of the identity of the recycling enterprise. The decentralized identity for the recycling company might have waste management and recycling specific registration numbers but otherwise does not differ from a DID of a product manufacturer.
+The section `credentialSubject` is domain specific in this W3C Verifiable Credential for recyclate materials. In this paper we are using the Recycled Material Standard (RMS) Framework to describe the recyclate<sup id="a4">[4](#f4)</sup>. In a further step, additional properties could be added also for 3rd party certifications such as the standardizations from ISO/TC 323 Circular Economy. The right data scheme and its domain specific properties for a full Circular Economy is not focus of this paper and requires further research and standardizations. The document itself has a cryptographic signature (see element “`proof`”) that ensures the immutability and therefore the trust in the information.
+
 
 ```
 {
@@ -336,8 +335,8 @@ The definition of required properties for a recycling company requires further r
 ## 5.4.	Trust and Authenticity 
 The W3C verifiable credential standard includes state of the art cryptography to build trust into the issued credential. The `proof` section contains the a signature which proofs that the credential was not changed but also who issues and signed it. The trust in the digital identities and signatures of the market participants (Figure 5 and Figure 7) is an important topic to address, when using the introduced decentralized technology. 
 
-One variant to provide trust is to use the already established web domain’s reputation. W3C’s recent draft for a [did:web Method Specification](https://w3c-ccg.github.io/did-method-web/)[^5] uses the established trust a of market participant’s websites. In this method, the [X.509 certificate](https://en.wikipedia.org/wiki/X.509) of a trusted domain, such as  sap.com, secured by a central public key infrastructure (PKI) is leveraged to securely manage the  DID document. In this method the DID document containing the public key is stored at the wellknown location of the domain (e.g. https://www.sap.com/.well-known/did.json). When a signature in the proof section of a credential is verifiable with the public key of that DID document, the verifier has a cryptographic proof that  the credential has been issued by the controller of the domain (here sap.com). Now the verifier can trust the market participant’s decentralized entity and the verifiable credentials s/he issued and therefore trust the product passports. The did:web method can be used instead of the did:ethr method we described in Section 3 to anchor a DID.
-[^5]:Including the previously discussed X.509 DID method  https://github.com/WebOfTrustInfo/rwot9-prague/blob/master/topics-and-advance-readings/X.509-DID-Method.md and other currently discussed authentication concepts (see https://www.researchgate.net/publication/342027346_Distributed-Ledger-based_Authentication_with_Decentralized_Identifiers_and_Verifiable_Credentials) 
+One variant to provide trust is to use the already established web domain’s reputation. W3C’s recent draft for a [did:web Method Specification](https://w3c-ccg.github.io/did-method-web/)<sup id="a5">[5](#f5)</sup> uses the established trust a of market participant’s websites. In this method, the [X.509 certificate](https://en.wikipedia.org/wiki/X.509) of a trusted domain, such as  sap.com, secured by a central public key infrastructure (PKI) is leveraged to securely manage the  DID document. In this method the DID document containing the public key is stored at the wellknown location of the domain (e.g. https://www.sap.com/.well-known/did.json). When a signature in the proof section of a credential is verifiable with the public key of that DID document, the verifier has a cryptographic proof that  the credential has been issued by the controller of the domain (here sap.com). Now the verifier can trust the market participant’s decentralized entity and the verifiable credentials s/he issued and therefore trust the product passports. The did:web method can be used instead of the did:ethr method we described in Section 3 to anchor a DID.
+
 # 6. Summary and Discussion 
 This paper has investigated the potential of novel digital instruments to alleviate current market failure in the circular economy market for plastics induced by information deficit and its consequences. These instruments can be used to lower or eliminate the informational barriers and the lack of trust inherent to the market for secondary plastic material that at present hinder the emergence of a fully functional circular plastics industry.
 
@@ -359,3 +358,14 @@ Many analyses and assessments have pointed out the ecological potential of circu
 
 
 
+---
+
+<b id="f1">1</b> See for instance EU 849/2010, in Germany Umweltstatistikgesetz (UStatG), for export/import EC 1013/200 but also stand ards like ISO 14040 ff. [↩](#a1)
+
+<b id="f2">2</b> For example Rebooting Web-of-Trust initiative https://www.weboftrust.info/  [↩](#a2)
+
+<b id="f3">3</b> https://www.gs1.eu/news/holy-grail-2-0-pioneering-digital-watermarks-for-smart-packaging-recycling-in-the-eu [↩](#a3)
+
+<b id="f4">4</b> To prevent fraud, we are proposing to add some further data for plausibility checks such as the waste collection area (zip code or geo location). Such example properties are not included in this code example and should be analyzed in further research.[↩](#a4)
+
+<b id="f5">5</b> Including the previously discussed X.509 DID method  https://github.com/WebOfTrustInfo/rwot9-prague/blob/master/topics-and-advance-readings/X.509-DID-Method.md and other currently discussed authentication concepts (see https://www.researchgate.net/publication/342027346_Distributed-Ledger-based_Authentication_with_Decentralized_Identifiers_and_Verifiable_Credentials) [↩](#a5)
